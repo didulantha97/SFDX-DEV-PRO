@@ -1,0 +1,71 @@
+<template>
+
+    <div class="slds-card__header slds-grid">
+        <lightning-card  variant="Narrow"  title="Knowledge Article Updater" icon-name="standard:account">
+            <!-- <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon> -->
+            
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-box slds-theme_shade">
+                <div class="slds-size_1-of-3 slds-p-around_medium">
+                    <lightning-combobox
+                        name="RecordType"
+                        label="Record Type"
+                        value={comboType}
+                        placeholder="Select Record Type"
+                        options={recOptions}
+                        onchange={handleRecordTypeChange} required>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-size_1-of-3 slds-p-around_medium">
+                    <lightning-combobox
+                        name="Provider"
+                        label="Provider"
+                        value={comboProvider}
+                        placeholder="Select Provider"
+                        options={providerOptions}
+                        onchange={handleProviderChange} required>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-size_1-of-3 slds-p-around_medium">
+                    <lightning-combobox
+                        name="FieldType"
+                        label="Field Type"
+                        value={comboField}
+                        placeholder="Select Field"
+                        options={fieldOptions}
+                        onchange={handleFieldChange} required>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-box slds">
+                <div class="slds-size_1-of-3 slds-p-around_medium">
+                    <div class="slds-text-align_center slds-m-around_x-small">
+                        <lightning-input type="text" label="Enter Replacing Text" placeholder="type here..." onchange={handleReplacingTextChange} required></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-size_1-of-3 slds-p-around_medium">
+                    <div class="slds-text-align_center slds-m-around_x-small">
+                        <lightning-input type="text" label="Enter New Text" placeholder="type here..." onchange={handleUpdateTextChange} required></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-size_1-of-3 slds-p-around_medium">
+                    <div class="slds-text-align_center slds-m-top_x-large">
+                        <lightning-button variant="brand" label="Update" title="Primary action" onclick={handleUpdateRecord}></lightning-button>
+                    </div>
+                </div>
+            </div>
+
+    
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-p-around_medium slds-box">
+                <lightning-datatable
+                    key-field="Id"
+                    data={wiredArticles.data}
+                    columns={columns}>
+                </lightning-datatable>
+            </div>
+       
+            <p slot="footer"></p>
+        </lightning-card>
+    </div>
+
+</template>
