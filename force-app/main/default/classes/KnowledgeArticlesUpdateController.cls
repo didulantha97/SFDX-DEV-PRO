@@ -22,7 +22,7 @@ public with sharing class KnowledgeArticlesUpdateController {
         }
     }
 
-    @AuraEnabled(cacheable=false)
+    @AuraEnabled(cacheable=true)
     public static List<SObject> getAllArticles(String providerKey, String recTypeKey){
 
        return [SELECT Id, OwnerId, PublishStatus, VersionNumber, Title, UrlName, Summary, ArticleNumber, RecordTypeId, Answer__c, Question__c, Provider__c FROM Knowledge__kav WHERE Provider__c =: providerKey AND RecordTypeId =: recTypeKey];
